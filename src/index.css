@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+.icon{
+    position: absolute;
+       top: 2.4%;
+    left: 25.4%;
+    font-size: 25.5px;
+    z-index: 99;
+}
