@@ -77,7 +77,7 @@ const Footers = () => {
                     <p className='w-[35%]  text-center p-[30px]' >© Blink Commerce Private Limited, 2016-2025</p>
                     <section className='w-[65%]' >
                         <p className='text-[24px] mt-[20px] text-center'>Download App</p>
-                        <img src="public/download(1).svg" alt="" />
+                        <img src="/download(1).svg" alt="" />
                         <img src="/download(2).svg" alt="" />
                         <img src="/download(3).svg" alt="" />
                         <img src="/download(4).svg" alt="" />

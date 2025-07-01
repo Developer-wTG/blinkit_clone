@@ -1,34 +1,56 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import { IoSearch } from "react-icons/io5";
-
+import { Link } from 'react-router-dom';
+import { BlinkitContext } from '../context/WebsiteContext';
 
 const Header = () => {
+    let { cart } = useContext(BlinkitContext)
     return (
-        <div>
-            <header className='flex max-w-[100%]'>
-                <div className="w-[10%] border p-[20px]">
-                    <img src="/download.svg" alt="" />
-                </div>
-                <div className="flex w-[90%] border">
-                    <section className="w-[15%]  text-center">
-                        <p className='text-[19.5px] font-bold ' >Delivery in 13 minutes</p>
-                        <p className='m-0 p-0'>Jodhpur, Rajasthan, India
-                        </p>
-                    </section>
-                    <section className=' w-[63%] '>
-                        <IoSearch className='icon' /><input type="search" className='border mt-[14.5px] p-[6px] w-[95%] ms-[28px] rounded-[10px] z-[-3]' />
-                    </section>
-                    <section className=' p-[15px] text-[25px] w-[9%] text-center '>
-                        <h3>Login</h3>
-                    </section>
-                    <section className='w-[13%] '>
-                        <button type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-[15px] ms-[60px] p-[50px]">My Cart</button>
-                    </section>
+        <header className='sticky top-0 left-0 w-full z-50 bg-white shadow-md'>
+            <div className='flex items-center justify-between max-w-[1200px] mx-auto px-4 py-3'>
+
+                {/* Logo */}
+                <div className="w-[100px]">
+                    <Link to={`/`}><img src="/download.svg" alt="Logo" className="w-full h-auto" /></Link>
                 </div>
 
-            </header>
-        </div>
-    )
+                {/* Location Info */}
+                <div className="flex flex-col justify-center w-[200px]">
+                    <p className='text-[16px] font-bold'>Delivery in 13 minutes</p>
+                    <p className='text-sm text-gray-600'>Jodhpur, Rajasthan, India</p>
+                </div>
+
+                {/* Search */}
+                <div className='flex items-center w-[40%] relative'>
+                    <IoSearch className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500' size={20} />
+                    <input
+                        type="search"
+                        placeholder="Search for products"
+                        className='w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500'
+                    />
+                </div>
+
+                {/* Login */}
+                <div className='text-center px-4'>
+                    <button className='text-green-700 font-semibold hover:underline'>Login</button>
+                </div>
+
+                {/* My Cart Button */}
+                <div>
+                    <Link to={`/cart`} >
+                       
+                        <button type="button" className="relative inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                            
+                            <span className="sr-only">Notifications</span>
+                          Cart
+                            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold dark:border-gray-900 text-white bg-red-500 border-1  border-white rounded-full -top-2 -end-2 ">{cart.length}</div>
+                        </button>
+                    </Link>
+                </div>
+            </div>
+        </header>
+    );
 }
 
-export default Header
+export default Header;
+// {cart.length}
